@@ -1,0 +1,30 @@
+a{
+  text-decoration: none;
+}
+
+.appWrapper {
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  text-align: center;
+  background-color: rgb(10, 10, 10, 0.03);
+  grid-template-areas:
+  "h h"
+  "s c";
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+}
+
+.appHeader {
+  grid-area: h;
+}
+
+.appSidebar {
+  grid-area: s;
+}
+
+.appContent {
+  grid-area: c;
+}
