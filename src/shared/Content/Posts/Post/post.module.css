@@ -10,6 +10,7 @@
 .avatar {
   height: 40px;
   border-radius: 20px;
+  margin-right: 10px;
 }
 
 .container {
@@ -22,12 +23,12 @@
   height: 30px;
   width: 30px;
   border-radius: 5px;
-  background-color: hotpink;
+  background-color: rgb(420, 0, 90, 0.4);
   border: none;
 }
 
 .karmaButton:hover {
   cursor: pointer;
-  box-shadow: 2px 2px 2px 2px grey;
+  box-shadow: 2px 2px 2px 2px rgb(420, 0, 90, 0.6);
   transition: box-shadow ease-out .3s;
 }
