@@ -8,3 +8,9 @@
   color: black;
   font-weight: bold;
 }
+
+.item a:hover {
+  color: gold;
+  transition: color ease-out .4s;
+  cursor: pointer;
+}

@@ -1,5 +1,9 @@
 .appContent {
   padding-left: 30px;
   text-align: left;
+}
 
+.img {
+  border-radius: 5px;
+  max-width: 100%;
 }

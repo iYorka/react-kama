@@ -1,0 +1,33 @@
+.message {
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  min-height: 40px;
+  background-color: rgb(10, 10, 10, 0.03);
+  border-radius: 3px;
+}
+
+.avatar {
+  height: 40px;
+  border-radius: 20px;
+}
+
+.container {
+  padding-top: 10px;
+
+}
+
+.karmaButton {
+  margin-top: 5px;
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  background-color: hotpink;
+  border: none;
+}
+
+.karmaButton:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 2px grey;
+  transition: box-shadow ease-out .3s;
+}

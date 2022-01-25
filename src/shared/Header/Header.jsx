@@ -3,14 +3,21 @@ import styles from "./header.module.css"
 import logo from "./logo.png";
 
 const Header = () => {
-  return (
-    <div>
+  return (<div>
       <header className={styles.appHeader}>
         <img className={styles.img} src={logo} alt="logo"/>
+        <div>
+          alalala
+        </div>
+        <div>
+          alala
+        </div>
 
+        <div>
+          alala
+        </div>
       </header>
-    </div>
-  );
+    </div>);
 };
 
 export default Header;
