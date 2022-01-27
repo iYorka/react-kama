@@ -1,7 +1,10 @@
 .dialogUser {
   background-color: white;
   border-radius: 5px;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  outline: 2px rgb(10, 10, 10, 0.1) solid;
+  border-radius: 5px;
 }
 
 .avatar {
@@ -14,5 +17,5 @@
 }
 
 .dialogUser:active {
-  outline: red 2px solid;
+  outline: rgb(420, 0, 90, 0.3) 2px solid;
 }

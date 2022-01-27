@@ -2,12 +2,13 @@ import React from 'react';
 import styles from "./content.module.css"
 import Posts from "./Posts/Posts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import {changeText} from "../redux/state";
 
-const Content = ({posts}) => {
+const Content = ({profileProps: {posts, addPost, newPostText, changeText}}) => {
   return (
     <div className={styles.appContent}>
       <ProfileInfo />
-      <Posts posts={posts}/>
+      <Posts posts={posts} addPost={addPost} newPostText={ newPostText } changeText={changeText}/>
     </div>
 
   );

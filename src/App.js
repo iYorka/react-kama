@@ -17,10 +17,22 @@ function App({state}) {
         </div>
         <div className="appContent">
           <Routes>
-            <Route path="/" element={<Content posts={state.posts}/>}/>
-            <Route path="/profile" element={<Content posts={state.posts}/>}/>
-            <Route path="/dialogs" element={<Dialogs dialogs={state.dialogs} messages={state.messages}/>}/>
-            <Route path="/dialogs/:userID" element={<Dialogs dialogs={state.dialogs} messages={state.messages}/>}/>
+            <Route path="/" element={
+              <Content
+                profileProps = {state.profilePage}
+              />}/>
+            <Route path="/profile" element={
+              <Content
+                profileProps = {state.profilePage}
+              />}/>
+            <Route path="/dialogs" element={
+              <Dialogs
+                dialogProps = {state.dialogsPage}
+              />}/>
+            <Route path="/dialogs/:userID" element={
+              <Dialogs
+                dialogProps = {state.dialogsPage}
+              />}/>
           </Routes>
         </div>
       </div>

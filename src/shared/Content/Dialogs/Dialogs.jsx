@@ -3,9 +3,7 @@ import styles from "./dialogs.module.css"
 import DialogsList from "./DialogsList/DialogsList";
 import MessagesList from "./MessagesList/MessagesList";
 
-const Dialogs = ({dialogs, messages}) => {
-
-
+const Dialogs = ({dialogProps: {dialogs, messages}}) => {
   return (
     <div className={styles.container}>
       <DialogsList dialogs={dialogs}/>

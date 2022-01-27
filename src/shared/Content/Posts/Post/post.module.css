@@ -5,6 +5,8 @@
   min-height: 40px;
   background-color: rgb(10, 10, 10, 0.03);
   border-radius: 3px;
+  outline: 2px rgb(10, 10, 10, 0.1) solid;
+  border-radius: 5px;
 }
 
 .avatar {
