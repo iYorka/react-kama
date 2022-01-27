@@ -1,16 +1,15 @@
 import React, {useState} from 'react';
 import Post from "./Post/Post";
 import styles from './posts.module.css'
+import NewPost from "./NewPost/NewPost";
 
-const Posts = () => {
-  const postsTempContent = [
-    {message: 'Hi, bro, its first post', likeCount: 33, avatar: undefined},
-    {message: 'Hi, bro, its second post', likeCount: 1488, avatar: undefined},
-    {message: 'Hi, bro, its third post', likeCount: -3, avatar: "https://upload.wikimedia.org/wikipedia/commons/8/87/Avatar_poe84it.png"}];
+const Posts = ({posts}) => {
+  console.log(posts)
   return (
     <div className={styles.container}>
+      <NewPost />
       <div>
-        {postsTempContent.map((post) =>
+        {posts.map((post) =>
           <Post message={post.message} likeCount={post.likeCount} avatar={post.avatar}/>)
         }
       </div>

@@ -1,6 +1,9 @@
-.appContent {
+.container {
   padding-left: 30px;
   padding-right: 20px;
   text-align: left;
+  display: grid;
+  grid-template-columns: 3fr 9fr;
 }
+
 

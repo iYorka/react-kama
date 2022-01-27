@@ -14,8 +14,14 @@
 }
 
 .container {
-  padding-top: 10px;
+  padding: 10px 10px 10px 10px;
+}
 
+
+.container:hover {
+  outline: gold 2px solid;
+  border-radius: 3px;
+  transition: outline-width ease-in-out .3s;
 }
 
 .karmaButton {
@@ -29,6 +35,6 @@
 
 .karmaButton:hover {
   cursor: pointer;
-  box-shadow: 2px 2px 2px 2px rgb(420, 0, 90, 0.6);
-  transition: box-shadow ease-out .3s;
+  outline: rgb(420, 0, 90, 0.3) solid 3px;
+  transition: outline-width ease-out .1s;
 }

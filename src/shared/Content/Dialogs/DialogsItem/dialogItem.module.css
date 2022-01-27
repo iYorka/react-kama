@@ -1,0 +1,18 @@
+.dialogUser {
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 3px;
+}
+
+.avatar {
+  height: 40px;
+}
+
+.dialogUser:hover {
+  outline: gold 2px solid;
+  transition: outline-width ease-in-out .3s;
+}
+
+.dialogUser:active {
+  outline: red 2px solid;
+}

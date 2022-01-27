@@ -1,0 +1,15 @@
+.container {
+  padding: 5px 20px 5px 5px;
+
+}
+
+.input {
+  width: 100%;
+  border-radius: 5px;
+  min-height: 80px;
+  outline: none;
+}
+
+.input:focus {
+  outline: rgb(420, 0, 90, 0.3) 3px solid;
+}

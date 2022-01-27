@@ -14,3 +14,7 @@
   transition: color ease-out .4s;
   cursor: pointer;
 }
+
+.item a.activeLink{
+  color: red;
+}
