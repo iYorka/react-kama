@@ -3,11 +3,11 @@ import Post from "./Post/Post";
 import styles from './posts.module.css'
 import NewPost from "./NewPost/NewPost";
 
-const Posts = ({posts, addPost, newPostText, changeText}) => {
+const Posts = ({posts, newPostText, dispatch}) => {
 
   return (
     <div className={styles.container}>
-      <NewPost addPost={addPost} newPostText = {newPostText} changeText={changeText}/>
+      <NewPost newPostText = {newPostText} dispatch = {dispatch}/>
       <div>
         {posts.map((post) =>
           <Post message={post.message} likeCount={post.likeCount} avatar={post.avatar}/>)

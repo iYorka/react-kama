@@ -5,7 +5,8 @@ import Content from "./shared/Content/Content";
 import Dialogs from "./shared/Content/Dialogs/Dialogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-function App({state, addPost, changeText}) {
+function App({state,dispatch}) {
+  debugger
   return (
     <BrowserRouter>
       <div className="appWrapper">
@@ -20,22 +21,22 @@ function App({state, addPost, changeText}) {
             <Route path="/" element={
               <Content
                 profileProps = {state.profilePage}
-                addPost={addPost}
-                changeText={changeText}
+                dispatch={dispatch}
               />}/>
             <Route path="/profile" element={
               <Content
                 profileProps = {state.profilePage}
-                addPost={addPost}
-                changeText={changeText}
+                dispatch={dispatch}
               />}/>
             <Route path="/dialogs" element={
               <Dialogs
                 dialogProps = {state.dialogsPage}
+                dispatch = {dispatch}
               />}/>
             <Route path="/dialogs/:userID" element={
               <Dialogs
                 dialogProps = {state.dialogsPage}
+                dispatch = {dispatch}
               />}/>
           </Routes>
         </div>

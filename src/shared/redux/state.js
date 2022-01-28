@@ -1,3 +1,7 @@
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
+import sidebarReducer from "./sidebarReducer";
+
 const postsTempContent = [
   {message: 'Hi, bro, its first post', likeCount: 33, avatar: undefined},
   {message: 'Hi, bro, its second post', likeCount: 1488, avatar: undefined},
@@ -22,6 +26,11 @@ const messagesArray = [
   {userID: 'user2', name: 'best friend', message: 'Dont call her!!! Its a trap!!!!'},
 ]
 
+const ADD_POST = 'ADD-POST';
+const CHANGE_TEXT = 'CHANGE-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
+const CHANGE_MESSAGE_TEXT = 'CHANGE-MESSAGE-TEXT';
+
 let store = {
   _state: {
     profilePage: {
@@ -31,34 +40,32 @@ let store = {
     dialogsPage: {
       dialogs: [...dialogArray],
       messages: [...messagesArray],
+      newDialogMessage: 'Well, hello...'
     },
     sidebarPage: {}
   },
-  _callSubscriber(){
+  _callSubscriber() {
   },
   getState() {
     return this._state
   },
-  subscribe(observer){
+  subscribe(observer) {
     this._callSubscriber = observer;
   },
-  addPost(){
-    let newPost = {
-      avatar: undefined,
-      likeCount: 0,
-      message: this._state.profilePage.newPostText
-    }
-    this._state.profilePage.posts.push(newPost);
-    this.changeText('');
+
+  dispatch(action) {
+
+    this._state.profilePage = profileReducer(this.getState().profilePage, action)
+    this._state.sidebarPage = sidebarReducer(this.getState().sidebarPage, action)
+    this._state.dialogsPage = dialogsReducer(this.getState().dialogsPage, action)
     this._callSubscriber(this._state)
-  },
-  changeText(newText){
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber(this._state)
-  },
 
 
-
+  }
 }
+
+
+
+
 
 export default store

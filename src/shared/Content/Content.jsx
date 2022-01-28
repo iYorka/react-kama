@@ -4,11 +4,11 @@ import Posts from "./Posts/Posts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {changeText} from "../redux/state";
 
-const Content = ({profileProps: {posts, newPostText}, addPost, changeText}) => {
+const Content = ({profileProps: {posts, newPostText}, dispatch}) => {
   return (
     <div className={styles.appContent}>
       <ProfileInfo />
-      <Posts posts={posts} addPost={addPost} newPostText={ newPostText } changeText={changeText}/>
+      <Posts posts={posts} newPostText={ newPostText } dispatch={dispatch}/>
     </div>
 
   );

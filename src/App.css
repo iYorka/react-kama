@@ -19,6 +19,7 @@ a{
 
 .appHeader {
   grid-area: h;
+  max-width: 100%;
 }
 
 .appSidebar {
