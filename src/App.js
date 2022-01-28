@@ -5,7 +5,7 @@ import Content from "./shared/Content/Content";
 import Dialogs from "./shared/Content/Dialogs/Dialogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-function App({state}) {
+function App({state, addPost, changeText}) {
   return (
     <BrowserRouter>
       <div className="appWrapper">
@@ -20,10 +20,14 @@ function App({state}) {
             <Route path="/" element={
               <Content
                 profileProps = {state.profilePage}
+                addPost={addPost}
+                changeText={changeText}
               />}/>
             <Route path="/profile" element={
               <Content
                 profileProps = {state.profilePage}
+                addPost={addPost}
+                changeText={changeText}
               />}/>
             <Route path="/dialogs" element={
               <Dialogs

@@ -1,11 +1,3 @@
-let rerenderEntireTree = () => {
-
-}
-
-export const subscribe = (observer) => {
-  rerenderEntireTree = observer;
-}
-
 const postsTempContent = [
   {message: 'Hi, bro, its first post', likeCount: 33, avatar: undefined},
   {message: 'Hi, bro, its second post', likeCount: 1488, avatar: undefined},
@@ -30,35 +22,43 @@ const messagesArray = [
   {userID: 'user2', name: 'best friend', message: 'Dont call her!!! Its a trap!!!!'},
 ]
 
-export const addPost = () => {
-  let newPost = {
-    avatar: undefined,
-    likeCount: 0,
-    message: state.profilePage.newPostText
-  }
-  state.profilePage.posts.push(newPost);
-  changeText('');
-  rerenderEntireTree(state)
-}
-
-export const changeText = (newText) => {
-  state.profilePage.newPostText = newText;
-  rerenderEntireTree(state)
-}
-
-
-let state = {
-  profilePage: {
-    posts: [...postsTempContent],
-    newPostText: 'La-la bla bla',
-    addPost: addPost,
-    changeText: changeText
+let store = {
+  _state: {
+    profilePage: {
+      posts: [...postsTempContent],
+      newPostText: 'La-la bla bla',
+    },
+    dialogsPage: {
+      dialogs: [...dialogArray],
+      messages: [...messagesArray],
+    },
+    sidebarPage: {}
   },
-  dialogsPage: {
-    dialogs: [...dialogArray],
-    messages: [...messagesArray],
+  _callSubscriber(){
   },
-  sidebarPage: {}
+  getState() {
+    return this._state
+  },
+  subscribe(observer){
+    this._callSubscriber = observer;
+  },
+  addPost(){
+    let newPost = {
+      avatar: undefined,
+      likeCount: 0,
+      message: this._state.profilePage.newPostText
+    }
+    this._state.profilePage.posts.push(newPost);
+    this.changeText('');
+    this._callSubscriber(this._state)
+  },
+  changeText(newText){
+    this._state.profilePage.newPostText = newText;
+    this._callSubscriber(this._state)
+  },
+
+
 
 }
-export default state
+
+export default store

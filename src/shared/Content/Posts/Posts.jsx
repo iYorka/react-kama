@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Post from "./Post/Post";
 import styles from './posts.module.css'
 import NewPost from "./NewPost/NewPost";
-import {changeText} from "../../redux/state";
 
-const Posts = ({posts, addPost, newPostText}) => {
+const Posts = ({posts, addPost, newPostText, changeText}) => {
 
   return (
     <div className={styles.container}>
