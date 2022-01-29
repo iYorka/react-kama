@@ -2,11 +2,10 @@ import './App.css';
 import Header from "./shared/Header/Header";
 import Sidebar from "./shared/Sidebar/Sidebar";
 import Content from "./shared/Content/Content";
-import Dialogs from "./shared/Content/Dialogs/Dialogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import DialogsContainer from "./shared/Content/Dialogs/DialogsContainer";
 
-function App({state,dispatch}) {
-  debugger
+function App({store}) {
   return (
     <BrowserRouter>
       <div className="appWrapper">
@@ -20,23 +19,19 @@ function App({state,dispatch}) {
           <Routes>
             <Route path="/" element={
               <Content
-                profileProps = {state.profilePage}
-                dispatch={dispatch}
+                store={store}
               />}/>
             <Route path="/profile" element={
               <Content
-                profileProps = {state.profilePage}
-                dispatch={dispatch}
+                store={store}
               />}/>
             <Route path="/dialogs" element={
-              <Dialogs
-                dialogProps = {state.dialogsPage}
-                dispatch = {dispatch}
+              <DialogsContainer
+                store={store}
               />}/>
             <Route path="/dialogs/:userID" element={
-              <Dialogs
-                dialogProps = {state.dialogsPage}
-                dispatch = {dispatch}
+              <DialogsContainer
+                store={store}
               />}/>
           </Routes>
         </div>

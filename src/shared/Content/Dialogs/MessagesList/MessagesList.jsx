@@ -1,11 +1,10 @@
 import React from 'react';
 import styles from "./messageList.module.css";
 import Message from "../Message/Message";
-import {useLocation} from "react-router";
 import NewMessage from "../NewMessage/NewMessage";
 
-const MessagesList = ({newDialogMessage, messages, dispatch}) => {
-  let location = useLocation();
+const MessagesList = ({newDialogMessage, messages, onChangeMessage, onAddMessage}) => {
+
   return (
     <div>
       <div className={styles.messagesList}>
@@ -14,7 +13,7 @@ const MessagesList = ({newDialogMessage, messages, dispatch}) => {
             message={message.message}/>
         )}
       </div>
-      <NewMessage newDialogMessage={newDialogMessage} dispatch={dispatch}/>
+      <NewMessage newDialogMessage={newDialogMessage} onChangeMessage = {onChangeMessage} onAddMessage={onAddMessage}/>
     </div>
   )
 }

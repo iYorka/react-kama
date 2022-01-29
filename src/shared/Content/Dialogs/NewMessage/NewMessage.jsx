@@ -1,21 +1,19 @@
 import React from 'react';
 import styles from './newmessage.module.css'
-import {changeMessageTextActionCreator, sendMessageActionCreator} from "../../../redux/dialogsReducer";
 
-const NewMessage = ({newDialogMessage, dispatch}) => {
+const NewMessage = ({newDialogMessage, onChangeMessage, onAddMessage}) => {
 
-  const onMessageChange = (e) => {
-    debugger
-    dispatch(changeMessageTextActionCreator(e.target.value))
+  const changeMessage = (e) => {
+    onChangeMessage(e.target.value)
   }
-  const onSendClick = () => {
-    dispatch(sendMessageActionCreator())
+  const sendClick = () => {
+    onAddMessage()
   }
 
   return (
     <div className={styles.container}>
-      <textarea onChange={onMessageChange} className={styles.input} value={newDialogMessage}/>
-      <button onClick={onSendClick} className={styles.button}> send message</button>
+      <textarea onChange={changeMessage} className={styles.input} value={newDialogMessage}/>
+      <button onClick={sendClick} className={styles.button}> send message</button>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from "./post.module.css";
-import emptyAvater from "./empty.png";
+import emptyAvatar from "./empty.png";
 
 const Post = ({
                 message = '',
                 likeCount = 0,
-                avatar = emptyAvater,
+                avatar = emptyAvatar,
 
               }) => {
   return (
