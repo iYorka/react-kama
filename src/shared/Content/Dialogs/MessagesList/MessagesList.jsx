@@ -10,10 +10,12 @@ const MessagesList = ({newDialogMessage, messages, onChangeMessage, onAddMessage
       <div className={styles.messagesList}>
         {messages.map((message) =>
           <Message
-            message={message.message}/>
+            message={message.message} key = {Math.random()}/>
         )}
       </div>
-      <NewMessage newDialogMessage={newDialogMessage} onChangeMessage = {onChangeMessage} onAddMessage={onAddMessage}/>
+      <NewMessage newDialogMessage={newDialogMessage}
+                  onChangeMessage = {onChangeMessage}
+                  onAddMessage={onAddMessage}/>
     </div>
   )
 }

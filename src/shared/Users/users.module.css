@@ -1,0 +1,14 @@
+.container {
+  border-radius: 5px;
+  padding: 0px 5px 5px 5px ;
+}
+
+.item {
+  margin-right: 10px;
+}
+
+.item:hover {
+  outline: gold 2px solid;
+  border-radius: 3px;
+  transition: outline-width ease-in-out .3s;
+}

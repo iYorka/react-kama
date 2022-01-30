@@ -1,0 +1,36 @@
+.container {
+  margin-bottom: 10px;
+  padding: 10px 10px 20px 20px;
+  background-color: white;
+  min-height: 60px;
+  border: 2px rgb(10, 10, 10, 0.1) solid;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.avatar {
+  height: 60px;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.button {
+  margin-top: 5px;
+  height: 40px;
+  padding: 5px 10px 5px 10px;
+  border: none;
+  outline: 2px rgb(10, 10, 10, 0.3) solid;
+  border-radius: 5px;
+
+}
+
+.button:hover {
+  outline: rgb(420, 0, 90, 0.3) 3px solid;
+  cursor: pointer;
+}

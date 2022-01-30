@@ -3,11 +3,11 @@ import styles from "./content.module.css"
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import PostsContainer from "./Posts/PostsContainer";
 
-const Content = ({store}) => {
+const Content = () => {
   return (
     <div className={styles.appContent}>
       <ProfileInfo />
-      <PostsContainer store={store}/>
+      <PostsContainer/>
     </div>
 
   );

@@ -6,7 +6,7 @@ const DialogsList = ({dialogs}) => {
   return (
     <div className={styles.dialogList}>
       {dialogs.map((dialog) =>
-        <DialogsItem avatar={dialog.avatar} userID={dialog.userID} name={dialog.name}/>
+        <DialogsItem avatar={dialog.avatar} userID={dialog.userID} name={dialog.name} key = {Math.random()}/>
       )}
     </div>
   )

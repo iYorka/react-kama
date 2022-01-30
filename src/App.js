@@ -4,8 +4,9 @@ import Sidebar from "./shared/Sidebar/Sidebar";
 import Content from "./shared/Content/Content";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import DialogsContainer from "./shared/Content/Dialogs/DialogsContainer";
+import UsersContainer from "./shared/Users/UsersContainer";
 
-function App({store}) {
+function App() {
   return (
     <BrowserRouter>
       <div className="appWrapper">
@@ -18,21 +19,15 @@ function App({store}) {
         <div className="appContent">
           <Routes>
             <Route path="/" element={
-              <Content
-                store={store}
-              />}/>
+              <Content/>}/>
             <Route path="/profile" element={
-              <Content
-                store={store}
-              />}/>
+              <Content/>}/>
             <Route path="/dialogs" element={
-              <DialogsContainer
-                store={store}
-              />}/>
+              <DialogsContainer/>}/>
             <Route path="/dialogs/:userID" element={
-              <DialogsContainer
-                store={store}
-              />}/>
+              <DialogsContainer/>}/>
+            <Route path="/users" element={
+              <UsersContainer/>}/>
           </Routes>
         </div>
       </div>

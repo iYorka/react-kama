@@ -18,8 +18,12 @@ const Sidebar = () => {
         <NavLink to="/music" className={({isActive}) =>`${isActive ? styles.activeLink : ''}`}> Music </NavLink>
       </div>
       <div className={styles.item}>
+        <NavLink to="/users" className={({isActive}) =>`${isActive ? styles.activeLink : ''}`}> Users </NavLink>
+      </div>
+      <div className={styles.item}>
         <NavLink to="/settings" className={({isActive}) =>`${isActive ? styles.activeLink : ''}`}> settings </NavLink>
       </div>
+
     </nav>
   );
 };
