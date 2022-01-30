@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
-import styles from './users.module.css'
+import styles from './users.module.css';
 import User from "./User/User";
+import axios from "axios";
 
 const Users = ({users, onFollow, onUnfollow, setUsers}) => {
   const tempUsers = [
@@ -45,8 +46,27 @@ const Users = ({users, onFollow, onUnfollow, setUsers}) => {
       status: 'Bla bla bla'
     },
   ]
-  useEffect(() => {if (users.length === 0)
-  {setUsers(tempUsers)}}, [])
+
+  useEffect(() => {
+      const userList = axios.get("https://social-network.samuraijs.com/api/1.0/users",
+        {count: 20, page: 1}
+      )
+        .then(data => {
+          data.data.items.map(
+            dataItem => {
+              tempUsers.push({
+                id: dataItem.id,
+                followed: dataItem.followed,
+                name: dataItem.name,
+                avatar: dataItem.photos.small ? dataItem.photos.small : dataItem.photos.large,
+                location: {city: 'Unsetted', country: 'Unsetted'},
+                status: dataItem.status
+              })
+
+            })
+          setUsers(tempUsers)
+        })
+  }, [])
   return (
     <div className={styles.container}>
       {users.map(user => {

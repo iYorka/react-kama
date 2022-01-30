@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./post.module.css";
-import emptyAvatar from "./empty.png";
+import emptyAvatar from "../../../../assets/images/empty.png";
 
 const Post = ({
                 message = '',

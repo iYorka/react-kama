@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './user.module.css'
-import emptyAvatar from '../../Content/Posts/Post/empty.png'
+import emptyAvatar from '../../../assets/images/empty.png'
 
 const User = ({user, onClick}) => {
   const onFollowClick = (e) => {
