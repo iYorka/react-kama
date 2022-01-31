@@ -74,11 +74,13 @@ const Users = ({
   }
   return (
     <div className={styles.container}>
-      {pagesArray.map(p => {
-        return (
-          <button onClick={() => onPageClick(p)}> {p} </button>
-        )
-      })}
+      <div className={styles.nav}>
+        {pagesArray.map(p => {
+          return (
+            <button className={`${styles.button} ${currentPage === p ? styles.activeButton : ''}`} onClick={() => onPageClick(p)}> {p} </button>
+          )
+        })}
+      </div>
       {users.map(user => {
         return (
           <div key={user.id} className={styles.item}>

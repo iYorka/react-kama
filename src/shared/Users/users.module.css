@@ -7,6 +7,30 @@
   margin-right: 10px;
 }
 
+.nav {
+  margin-bottom: 20px;
+}
+
+.button {
+  padding: 0;
+  text-align: center;
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+  border: none;
+  outline: 2px rgb(10, 10, 10, 0.3) solid;
+  border-radius: 5px;
+}
+
+.button:hover {
+  outline: rgb(420, 0, 90, 0.3) 3px solid;
+  cursor: pointer;
+}
+
+.activeButton {
+  outline: 3px red solid;
+}
+
 .item:hover {
   outline: gold 2px solid;
   border-radius: 3px;
