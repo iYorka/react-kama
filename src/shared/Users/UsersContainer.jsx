@@ -1,27 +1,22 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Users from "./Users";
-import {followUserActionCreator, setUsersActionCreator, unfollowUserActionCreator} from "../redux/usersReducer";
+import {
+  followUserActionCreator,
+  setCurrentPageActionCreator,
+  setUsersActionCreator,
+  unfollowUserActionCreator
+} from "../redux/usersReducer";
 import axios from "axios";
 
 const mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users
+    users: state.usersPage.users,
+    totalPageCount: Math.ceil(state.usersPage.totalUsersCount / state.usersPage.pageSize),
+    currentPage: state.usersPage.currentPage,
+    pageSize: state.usersPage.pageSize
   }
 }
-const tempUsers = []
-const userList = axios.get("https://social-network.samuraijs.com/api/1.0/users",
-  {count: 20, page: 1}
-)
-  .then(data => data.data.items.map(dataItem => tempUsers.push({
-    id: dataItem.id,
-    followed: dataItem.followed,
-    name: dataItem.name,
-    avatar: dataItem.photos.small ? dataItem.photos.small : dataItem.photos.large,
-    location: {city: 'Unsetted', country: 'Unsetted'},
-    status: dataItem.status
-  })))
-
 
 const mapDispatchToProps = (dispatch) => {
   const onFollow = (user_id) => {
@@ -30,14 +25,20 @@ const mapDispatchToProps = (dispatch) => {
   const onUnfollow = (user_id) => {
     dispatch(unfollowUserActionCreator(user_id))
   }
-  const setUsers = (users) => {
-    dispatch(setUsersActionCreator(users))
+  const setUsers = (users, totalUsersCount) => {
+    dispatch(setUsersActionCreator(users, totalUsersCount))
+  }
+
+  const onPageClick = (currentPage) => {
+    debugger
+    dispatch(setCurrentPageActionCreator(currentPage))
   }
 
   return {
     onFollow,
     onUnfollow,
-    setUsers
+    setUsers,
+    onPageClick
   }
 }
 

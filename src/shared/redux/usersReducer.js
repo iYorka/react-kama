@@ -1,13 +1,15 @@
-const ADD_USER = 'ADD-USER';
+const ADD_USER = 'ADD_USER';
 const SEARCH_USER = 'SEARCH_USER';
 const UNFOLLOW_USER = 'UNFOLLOW_USER';
 const FOLLOW_USER = 'FOLLOW_USER';
 const SET_USERS = 'SET_USERS';
-
-const defaultUsers = [];
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 
 const initialState = {
-  users: defaultUsers,
+  users: [],
+  currentPage: 1,
+  totalUsersCount: 0,
+  pageSize: 15
 }
 
 export const usersReducer = (state = initialState, action) => {
@@ -22,6 +24,8 @@ export const usersReducer = (state = initialState, action) => {
           return user
         })
       }
+    case SET_CURRENT_PAGE:
+      return {...state, currentPage: action.currentPage}
     case UNFOLLOW_USER:
       return {
         ...state,
@@ -33,7 +37,7 @@ export const usersReducer = (state = initialState, action) => {
         })
       }
     case SET_USERS:
-      return {...state, users: [...state.users, ...action.users]}
+      return {...state, users: [...action.users], totalUsersCount: action.totalUsersCount}
     case
     ADD_USER:
 
@@ -63,9 +67,15 @@ export const unfollowUserActionCreator = (id) => ({
   user_id: id
 })
 
-export const setUsersActionCreator = (users) => ({
+export const setUsersActionCreator = (users, totalUsersCount) => ({
   type: SET_USERS,
-  users: users
+  users: users,
+  totalUsersCount: totalUsersCount
+})
+
+export const setCurrentPageActionCreator = (currentPage) => ({
+  type: SET_CURRENT_PAGE,
+  currentPage: currentPage
 })
 
 export const searchUserActionCreator = (name = '', id = 0) => ({
