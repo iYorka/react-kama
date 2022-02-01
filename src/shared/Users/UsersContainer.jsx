@@ -1,24 +1,28 @@
 import React from 'react';
 import {connect} from "react-redux";
-import Users from "./Users";
 import {
   followUserActionCreator,
-  setCurrentPageActionCreator,
+  setCurrentPageActionCreator, setIsLoadingActionCreator,
   setUsersActionCreator,
   unfollowUserActionCreator
 } from "../redux/usersReducer";
-import axios from "axios";
+
+import UsersAPIComponent from "./UsersAPIComponent";
 
 const mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
     totalPageCount: Math.ceil(state.usersPage.totalUsersCount / state.usersPage.pageSize),
     currentPage: state.usersPage.currentPage,
-    pageSize: state.usersPage.pageSize
+    pageSize: state.usersPage.pageSize,
+    isLoading: state.usersPage.isLoading,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
+  const setIsLoading = (isLoading) => {
+    dispatch(setIsLoadingActionCreator(isLoading))
+  }
   const onFollow = (user_id) => {
     dispatch(followUserActionCreator(user_id))
   }
@@ -30,7 +34,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 
   const onPageClick = (currentPage) => {
-    debugger
     dispatch(setCurrentPageActionCreator(currentPage))
   }
 
@@ -38,10 +41,11 @@ const mapDispatchToProps = (dispatch) => {
     onFollow,
     onUnfollow,
     setUsers,
-    onPageClick
+    onPageClick,
+    setIsLoading
   }
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users)
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent)
 
 export default UsersContainer;

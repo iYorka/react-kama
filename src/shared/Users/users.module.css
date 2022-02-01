@@ -20,15 +20,23 @@
   border: none;
   outline: 2px rgb(10, 10, 10, 0.3) solid;
   border-radius: 5px;
+  background-color: white;
 }
 
 .button:hover {
   outline: rgb(420, 0, 90, 0.3) 3px solid;
   cursor: pointer;
+  transition: outline-width ease-in-out .2s;
+}
+
+.button:active {
+  outline: red 3px solid;
 }
 
 .activeButton {
-  outline: 3px red solid;
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .item:hover {

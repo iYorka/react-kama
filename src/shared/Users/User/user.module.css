@@ -8,6 +8,10 @@
   text-align: left;
 }
 
+p{
+  word-break: break-all;
+}
+
 .itemInfo {
   display: flex;
   flex-direction: row;

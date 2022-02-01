@@ -4,12 +4,14 @@ const UNFOLLOW_USER = 'UNFOLLOW_USER';
 const FOLLOW_USER = 'FOLLOW_USER';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_IS_LOADING = 'SET_IS_LOADING';
 
 const initialState = {
   users: [],
   currentPage: 1,
   totalUsersCount: 0,
-  pageSize: 15
+  pageSize: 25,
+  isLoading: false
 }
 
 export const usersReducer = (state = initialState, action) => {
@@ -38,15 +40,14 @@ export const usersReducer = (state = initialState, action) => {
       }
     case SET_USERS:
       return {...state, users: [...action.users], totalUsersCount: action.totalUsersCount}
-    case
-    ADD_USER:
+    case ADD_USER:
 
       return {
         ...state,
       };
-    case
-    SEARCH_USER:
-
+    case SEARCH_USER:
+    case SET_IS_LOADING:
+      return {...state, isLoading: action.isLoading}
     default
     :
       return state
@@ -55,6 +56,11 @@ export const usersReducer = (state = initialState, action) => {
 
 export const addUserActionCreator = () => ({
   type: ADD_USER
+})
+
+export const setIsLoadingActionCreator = (isLoading) => ({
+  type: SET_IS_LOADING,
+  isLoading: isLoading
 })
 
 export const followUserActionCreator = (id) => ({

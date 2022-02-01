@@ -18,7 +18,7 @@ const User = ({user, onClick}) => {
             location: {user.location.country}, {user.location.city}
           </div>
           <div>
-            status: {user.status}
+            <p>status: {user.status}</p>
           </div>
         </div>
       </div>
