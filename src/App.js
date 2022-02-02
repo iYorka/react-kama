@@ -1,18 +1,17 @@
 import './App.css';
-import Header from "./shared/Header/Header";
 import Sidebar from "./shared/Sidebar/Sidebar";
-import Content from "./shared/Content/Content";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import DialogsContainer from "./shared/Content/Dialogs/DialogsContainer";
 import UsersContainer from "./shared/Users/UsersContainer";
 import ContentContainer from "./shared/Content/ContentContainer";
+import HeaderContainer from "./shared/Header/HeaderContainer";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="appWrapper">
         <div className="appHeader">
-          <Header/>
+          <HeaderContainer/>
         </div>
         <div className="appSidebar">
           <Sidebar/>

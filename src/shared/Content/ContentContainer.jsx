@@ -6,7 +6,7 @@ import {useParams} from "react-router";
 import axios from "axios";
 import emptyAvatar from "../../assets/images/empty.png";
 
-const ContentContainer = ({setProfileIsLoading, setProfileData, profile, isLoading }) => {
+const ContentContainer = ({isLogined, setProfileIsLoading, setProfileData, profile, isLoading }) => {
   const params = useParams();
   const userID = params.userID;
   useEffect(() => {
@@ -27,7 +27,8 @@ const ContentContainer = ({setProfileIsLoading, setProfileData, profile, isLoadi
       })
 
     } else {
-      setProfileData({
+      setProfileData(
+        isLogined ? ({
         profile: {
           id: 0,
           name: 'Me',
@@ -36,9 +37,18 @@ const ContentContainer = ({setProfileIsLoading, setProfileData, profile, isLoadi
           age: 'My real age',
           info: 'Looking for a good job'
         }
-      })
+      }) : ({
+          profile: {
+            id: 0,
+            name: 'NONE',
+            avatar: 'https://99px.ru/sstorage/56/2013/02/mid_88793_9191.jpg',
+            status: 'NONE',
+            age: 'NONE',
+            info: 'NONE'
+          }
+        }))
     }
-  }, [params.userID])
+  }, [params.userID, isLogined])
   return (
     <Content profile={profile} isLoading={isLoading}/>
   );
@@ -52,7 +62,8 @@ const mapStateToProps = (state) => {
     status: state.profilePage.profile.status,
     age: state.profilePage.profile.age,
     profile: state.profilePage.profile,
-    isLoading: state.profilePage.isLoading
+    isLoading: state.profilePage.isLoading,
+    isLogined: state.auth.isLogined
   }
 }
 

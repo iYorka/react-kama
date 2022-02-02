@@ -13,7 +13,7 @@ const Users = ({users, totalPageCount, currentPage, onUnfollow, onFollow, onPage
       <div className={styles.nav}>
         {pagesArray.map(p => {
           return (
-            <button className={`${styles.button} ${currentPage === p ? styles.activeButton : ''}`}
+            <button key={ p} className={`${styles.button} ${currentPage === p ? styles.activeButton : ''}`}
                     onClick={() => onPageClick(p)}> {p} </button>
           )
         })}
@@ -21,7 +21,7 @@ const Users = ({users, totalPageCount, currentPage, onUnfollow, onFollow, onPage
       {isLoading ? <Preloader /> : users.map(user => {
         return (
             <div key={user.id} className={styles.item}>
-              <User user={user} onClick={user.followed ? onUnfollow : onFollow}/>
+              <User user={user} onClick={user.followed ? () => onUnfollow(user.id) : () => onFollow(user.id)}/>
             </div>
         )
       })}

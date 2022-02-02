@@ -1,10 +1,27 @@
 .img {
   height: 95px;
   /*width: 145px;*/
-
 }
 
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
 
+.login {
+  font-size: 16px;
+  padding-right: 40px;
+  color: black;
+  font-weight: bold;
+}
+
+.login:hover {
+  color: red;
+  transition: color ease-out .4s;
+
+}
 
 .appHeader {
   border-radius: 0 0 5px 5px;
@@ -14,7 +31,7 @@
   display: flex;
   flex-direction: row;
   text-align: center;
-  align-content: center;
+
   font-size: calc(10px + 2vmin);
   color: black;
 }
