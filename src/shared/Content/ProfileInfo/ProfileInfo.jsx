@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from "./profileInfo.module.css";
 import Profile from "./Profile/Profile";
+import Preloader from "../../common/Preloader/Preloader";
 
-const ProfileInfo = () => {
+const ProfileInfo = ({profile, isLoading}) => {
   return (
     <div>
       <div>
@@ -11,7 +12,8 @@ const ProfileInfo = () => {
              alt="main profile pic"/>
       </div>
       <div>
-        <Profile/>
+        {isLoading ? <Preloader /> : <Profile profile={profile} />}
+
       </div>
     </div>
   )

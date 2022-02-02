@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "../users.module.css";
 import User from "./User";
-import loadingImg from '../../../assets/images/loading.svg'
+import Preloader from "../../common/Preloader/Preloader";
 
 const Users = ({users, totalPageCount, currentPage, onUnfollow, onFollow, onPageClick, isLoading}) => {
   const pagesArray = [];
@@ -18,7 +18,7 @@ const Users = ({users, totalPageCount, currentPage, onUnfollow, onFollow, onPage
           )
         })}
       </div>
-      {isLoading ? <img src={loadingImg} alt=""/> : users.map(user => {
+      {isLoading ? <Preloader /> : users.map(user => {
         return (
             <div key={user.id} className={styles.item}>
               <User user={user} onClick={user.followed ? onUnfollow : onFollow}/>

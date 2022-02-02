@@ -1,14 +1,16 @@
 import React from 'react';
 import styles from "./profile.module.css"
 
-const Profile = () => {
+const Profile = ({profile}) => {
   return (
     <div className={styles.container}>
-      <p>name</p>
-      <p>another name</p>
-      <p>mail</p>
-      <p>birth</p>
-      <p>bla bla bla</p>
+      <img className={styles.avatar} src={profile.avatar} alt=""/>
+      <div className={styles.info}>
+        <p>name: {profile.name}</p>
+        <p>birth: {profile.age}</p>
+        <p>status: {profile.status}</p>
+        <p>info: {profile.info}</p>
+      </div>
     </div>
   );
 };

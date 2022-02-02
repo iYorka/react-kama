@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './user.module.css'
 import emptyAvatar from '../../../assets/images/empty.png'
+import {NavLink} from "react-router-dom";
 
 const User = ({user, onClick}) => {
   const onFollowClick = (e) => {
@@ -9,7 +10,9 @@ const User = ({user, onClick}) => {
   return (
     <div className={styles.container}>
       <div className={styles.itemInfo}>
-        <img className={styles.avatar} src={user.avatar ? user.avatar : emptyAvatar} alt="user avatar image"/>
+        <NavLink to={'/profile/' + user.id}>
+          <img className={styles.avatar} src={user.avatar ? user.avatar : emptyAvatar} alt="user avatar image"/>
+        </NavLink>
         <div>
           <div>
             name: {user.name}

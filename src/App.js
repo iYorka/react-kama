@@ -5,6 +5,7 @@ import Content from "./shared/Content/Content";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import DialogsContainer from "./shared/Content/Dialogs/DialogsContainer";
 import UsersContainer from "./shared/Users/UsersContainer";
+import ContentContainer from "./shared/Content/ContentContainer";
 
 function App() {
   return (
@@ -19,9 +20,11 @@ function App() {
         <div className="appContent">
           <Routes>
             <Route path="/" element={
-              <Content/>}/>
+              <ContentContainer/>}/>
             <Route path="/profile" element={
-              <Content/>}/>
+              <ContentContainer/>}/>
+            <Route path="/profile/:userID" element={
+              <ContentContainer/>}/>
             <Route path="/dialogs" element={
               <DialogsContainer/>}/>
             <Route path="/dialogs/:userID" element={
