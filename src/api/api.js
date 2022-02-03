@@ -23,3 +23,7 @@ export const postUnfollow = (userID) => {
 export const authMe = () => {
   return connection.get(`auth/me`).then((response) => {return response.data})
 }
+
+export const getUserProfile = (userID) => {
+  return connection.get(`/profile/${userID}`).then((response) => {return response.data})
+}

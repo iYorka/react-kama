@@ -1,3 +1,5 @@
+import * as api from "../../api/api";
+
 const SET_LOGIN_DATA = 'SET_LOGIN_DATA'
 
 const initialState = {
@@ -31,4 +33,25 @@ export const setLoginData = ({login, email, userId, isLogined}) => {
       isLogined
     }
   })
+}
+
+export const setLoginDataThunk = () => (dispatch) => {
+  {
+    api.authMe().then((data) => {
+      if (data.data.login)
+        dispatch(setLoginData({
+          login: data.data.login,
+          email: data.data.email,
+          id: data.data.id,
+          isLogined: true
+        }))
+      else
+        dispatch(setLoginData({
+          login: null,
+          email: null,
+          id: null,
+          isLogined: false
+        }))
+    })
+  }
 }

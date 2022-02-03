@@ -1,3 +1,5 @@
+import * as api from "../../api/api";
+
 const ADD_USER = 'ADD_USER';
 const SEARCH_USER = 'SEARCH_USER';
 const UNFOLLOW_USER = 'UNFOLLOW_USER';
@@ -52,7 +54,7 @@ export const usersReducer = (state = initialState, action) => {
       state.isUpdatingNow.push(action.id)
       return {...state, isUpdatingNow: [...state.isUpdatingNow]}
     case SET_IS_UPDATED:
-      return {...state, isUpdatingNow: state.isUpdatingNow.filter((el) => el != action.id)}
+      return {...state, isUpdatingNow: state.isUpdatingNow.filter((el) => el !== action.id)}
     case SEARCH_USER:
     case SET_IS_LOADING:
       return {...state, isLoading: action.isLoading}
@@ -108,5 +110,51 @@ export const searchUserActionCreator = (name = '', id = 0) => ({
   id: id
 })
 
+export const getUsers = (currentPage, pageSize) => (dispatch) => {
+  dispatch(setIsLoading(true));
+  api.getUsers(currentPage, pageSize).then(data => {
+    const tempUsers = []
+    data.items.map(
+      dataItem => {
+        tempUsers.push({
+          id: dataItem.id,
+          followed: dataItem.followed,
+          name: dataItem.name,
+          avatar: dataItem.photos.small ? dataItem.photos.small : 'https://upload.wikimedia.org/wikipedia/commons/8/87/Avatar_poe84it.png',
+          location: {city: 'Unsetted', country: 'Unsetted'},
+          status: dataItem.status
+        })
+      })
+    dispatch(setUsers(tempUsers, data.totalCount))
+    dispatch(setIsLoading(false));
+  })
+}
+
+export const followUserThunk = (userID) => (dispatch) => {
+  dispatch(setIsUpdatingNow(userID))
+  api.postFollow(userID).then((data) => {
+    if (data.resultCode == 0) {
+      dispatch(followUser(userID))
+      dispatch(setIsUpdated(userID))
+    } else {
+      alert(data)
+      dispatch(setIsUpdated(userID))
+    }
+  }).catch((error) => console.log(error))
+}
+
+
+export const unfollowUserThunk = (userID) => (dispatch) => {
+  dispatch(setIsUpdatingNow(userID))
+  api.postUnfollow(userID).then((data) => {
+    if (data.resultCode == 0) {
+      dispatch(unfollowUser(userID))
+      dispatch(setIsUpdated(userID))
+    } else {
+      alert(data)
+      dispatch(setIsUpdated(userID))
+    }
+  }).catch((error) => console.log(error))
+}
 
 export default usersReducer

@@ -1,53 +1,23 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import Content from "./Content";
-import {addPost, changeText, setProfileData, setProfileIsLoading} from "../redux/profileReducer";
+import {
+  addPost,
+  changeText,
+  setMyProfile,
+  setProfile,
+  setProfileData,
+  setProfileIsLoading
+} from "../redux/profileReducer";
 import {useParams} from "react-router";
-import axios from "axios";
-import emptyAvatar from "../../assets/images/empty.png";
 
-const ContentContainer = ({isLogined, setProfileIsLoading, setProfileData, profile, isLoading }) => {
+const ContentContainer = ({setProfile, setMyProfile, isLogined, profile, isLoading }) => {
   const params = useParams();
   const userID = params.userID;
   useEffect(() => {
     if (params.userID) {
-      setProfileIsLoading(true)
-      axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userID}`).then((response) => {
-        setProfileData({
-          profile: {
-            id: userID,
-            name: response.data.fullName,
-            avatar: response.data.photos.small ? response.data.photos.small : emptyAvatar,
-            status: 'status',
-            age: 'unknown',
-            info: response.data.lookingForAJob ? 'Looking for job' : 'Not looking for job'
-          }
-        })
-        setProfileIsLoading(false)
-      })
-
-    } else {
-      setProfileData(
-        isLogined ? ({
-        profile: {
-          id: 0,
-          name: 'Me',
-          avatar: 'https://99px.ru/sstorage/56/2013/02/mid_88793_9191.jpg',
-          status: 'Bla bla bla',
-          age: 'My real age',
-          info: 'Looking for a good job'
-        }
-      }) : ({
-          profile: {
-            id: 0,
-            name: 'NONE',
-            avatar: 'https://99px.ru/sstorage/56/2013/02/mid_88793_9191.jpg',
-            status: 'NONE',
-            age: 'NONE',
-            info: 'NONE'
-          }
-        }))
-    }
+      setProfile(userID)
+    } else { setMyProfile (isLogined)    }
   }, [params.userID, isLogined])
   return (
     <Content profile={profile} isLoading={isLoading}/>
@@ -67,4 +37,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {setProfileIsLoading, setProfileData, addPost, changeText})(ContentContainer);
+export default connect(mapStateToProps, {setProfile, setMyProfile, setProfileIsLoading, setProfileData, addPost, changeText})(ContentContainer);
