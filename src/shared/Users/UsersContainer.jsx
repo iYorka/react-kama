@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import {
   followUser,
-  setCurrentPage, setIsLoading,
+  setCurrentPage, setIsLoading, setIsUpdated, setIsUpdatingNow,
   setUsers,
   unfollowUser
 } from "../redux/usersReducer";
@@ -16,6 +16,7 @@ const mapStateToProps = (state) => {
     currentPage: state.usersPage.currentPage,
     pageSize: state.usersPage.pageSize,
     isLoading: state.usersPage.isLoading,
+    isUpdatingNow: state.usersPage.isUpdatingNow
   }
 }
 
@@ -24,7 +25,9 @@ const UsersContainer = connect(mapStateToProps, {
   setCurrentPage,
   setIsLoading,
   setUsers,
-  unfollowUser
+  unfollowUser,
+  setIsUpdatingNow,
+  setIsUpdated
 })(UsersAPIComponent)
 
 export default UsersContainer;

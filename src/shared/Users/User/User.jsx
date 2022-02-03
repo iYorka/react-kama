@@ -3,7 +3,7 @@ import styles from './user.module.css'
 import emptyAvatar from '../../../assets/images/empty.png'
 import {NavLink} from "react-router-dom";
 
-const User = ({user, onClick}) => {
+const User = ({isUpdatingNow, user, onClick}) => {
   const onFollowClick = (e) => {
     onClick(user.id)
   }
@@ -25,7 +25,7 @@ const User = ({user, onClick}) => {
           </div>
         </div>
       </div>
-      <button onClick={onFollowClick} className={styles.button}> {!user.followed ? 'follow' : 'unfollow'}</button>
+      <button disabled={isUpdatingNow.some((u) => u === user.id) ? true : false } onClick={onFollowClick} className={styles.button}> {!user.followed ? 'follow' : 'unfollow'}</button>
 
     </div>
   );

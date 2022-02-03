@@ -6,7 +6,8 @@ import {getUsers, postFollow, postUnfollow} from "../../api/api";
 
 const UsersAPIComponent = ({
                              users, setCurrentPage, followUser, unfollowUser, setUsers, setIsLoading, isLoading,
-                             totalPageCount = 0, currentPage = 1, pageSize
+                             totalPageCount = 0, currentPage = 1, pageSize, setIsUpdatingNow, setIsUpdated,
+                             isUpdatingNow
                            }) => {
     useEffect(() => {
       setIsLoading(true);
@@ -30,21 +31,27 @@ const UsersAPIComponent = ({
     }, [currentPage])
 
     const onUserFollow = (userID) => {
+      setIsUpdatingNow(userID)
       postFollow(userID).then((data) => {
         if (data.resultCode == 0) {
           followUser(userID)
+          setIsUpdated(userID)
         } else {
           alert(data)
+          setIsUpdated(userID)
         }
       }).catch((error) => console.log(error))
     }
 
     const onUserUnfollow = (userID) => {
+      setIsUpdatingNow(userID)
       postUnfollow(userID).then((data) => {
         if (data.resultCode == 0) {
           unfollowUser(userID)
+          setIsUpdated(userID)
         } else {
           alert(data)
+          setIsUpdated(userID)
         }
       }).catch((error) => console.log(error))
     }
@@ -56,7 +63,10 @@ const UsersAPIComponent = ({
              onFollow={onUserFollow}
              onUnfollow={onUserUnfollow}
              currentPage={currentPage}
-             isLoading={isLoading}/>
+             isLoading={isLoading}
+             isUpdatingNow={isUpdatingNow}
+      />
+
     );
   }
 ;

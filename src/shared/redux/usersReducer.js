@@ -5,13 +5,16 @@ const FOLLOW_USER = 'FOLLOW_USER';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_IS_LOADING = 'SET_IS_LOADING';
+const SET_IS_UPDATING_NOW = 'SET_IS_UPDATING_NOW';
+const SET_IS_UPDATED = 'SET_IS_UPDATED';
 
 const initialState = {
   users: [],
   currentPage: 1,
   totalUsersCount: 0,
   pageSize: 25,
-  isLoading: false
+  isLoading: false,
+  isUpdatingNow: []
 }
 
 export const usersReducer = (state = initialState, action) => {
@@ -45,6 +48,11 @@ export const usersReducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case SET_IS_UPDATING_NOW:
+      state.isUpdatingNow.push(action.id)
+      return {...state, isUpdatingNow: [...state.isUpdatingNow]}
+    case SET_IS_UPDATED:
+      return {...state, isUpdatingNow: state.isUpdatingNow.filter((el) => el != action.id)}
     case SEARCH_USER:
     case SET_IS_LOADING:
       return {...state, isLoading: action.isLoading}
@@ -82,6 +90,16 @@ export const setUsers = (users, totalUsersCount) => ({
 export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage: currentPage
+})
+
+export const setIsUpdatingNow = (userID) => ({
+  type: SET_IS_UPDATING_NOW,
+  id: userID
+})
+
+export const setIsUpdated = (userID) => ({
+  type: SET_IS_UPDATED,
+  id: userID
 })
 
 export const searchUserActionCreator = (name = '', id = 0) => ({
